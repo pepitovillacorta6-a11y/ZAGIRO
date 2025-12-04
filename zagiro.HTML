@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ZAGIRO GYM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Colores de status */
+        :root {
+            --black: #0A0A0A;
+            --dark-gray: #1A1A1A;
+            --gold: #D4AF37;
+            --silver: #C0C0C0;
+            --light: #F5F5F5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--black);
+            color: var(--light);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        /* Header simple */
+        header {
+            background: var(--black);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Hero con imagen fija */
+        .hero {
+            margin-top: 70px;
+            position: relative;
+            background: var(--dark-gray);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .hero-content {
+            padding: 20px;
+            text-align: center;
+            background: var(--black);
+        }
+
+        .hero-title {
+            font-size: 28px;
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            color: var(--silver);
+            margin-bottom: 15px;
+        }
+
+        /* Oferta simple */
+        .offer {
+            padding: 30px 20px;
+            background: var(--dark-gray);
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .offer-price {
+            font-size: 48px;
+            color: var(--gold);
+            font-weight: 800;
+            margin: 15px 0;
+        }
+
+        .offer-note {
+            font-size: 14px;
+            color: var(--silver);
+        }
+
+        /* Color único */
+        .color-section {
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .color-title {
+            font-size: 20px;
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .color-display {
+            width: 120px;
+            height: 120px;
+            background: var(--black);
+            border: 3px solid var(--gold);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--silver);
+        }
+
+        /* Tallas simples */
+        .sizes {
+            padding: 30px 20px;
+            background: var(--dark-gray);
+            text-align: center;
+        }
+
+        .sizes-grid {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .size {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--black);
+            border: 2px solid var(--silver);
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--silver);
+        }
+
+        .size.active {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        /* Proceso simple */
+        .process {
+            padding: 30px 20px;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .step-number {
+            min-width: 30px;
+            height: 30px;
+            background: var(--gold);
+            color: var(--black);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 15px;
+            margin-top: 3px;
+        }
+
+        .step-content h3 {
+            font-size: 17px;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+
+        .step-content p {
+            font-size: 15px;
+            color: var(--silver);
+        }
+
+        /* WhatsApp fijo */
+        .whatsapp-fixed {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 100;
+        }
+
+        /* CTA fijo */
+        .cta-fixed {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--black);
+            padding: 15px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            z-index: 99;
+        }
+
+        .cta-button {
+            display: block;
+            width: 100%;
+            background: var(--gold);
+            color: var(--black);
+            border: none;
+            padding: 16px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 20px 100px;
+            background: var(--dark-gray);
+            text-align: center;
+        }
+
+        .contact-info {
+            margin: 20px 0;
+        }
+
+        .contact-item {
+            margin: 10px 0;
+            font-size: 15px;
+            color: var(--silver);
+        }
+
+        .contact-item a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .copyright {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* Responsive */
+        @media (max-width: 400px) {
+            .container {
+                padding: 10px;
+            }
+
+            .offer-price {
+                font-size: 42px;
+            }
+
+            .cta-button {
+                padding: 14px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">ZAGIRO</div>
+            <a href="https://wa.me/51958765620?text=Hola%20ZAGIRO,%20quiero%20el%20pack%203%20polos%20x%20S/100"
+                class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> Pedir
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero con imagen -->
+    <section class="hero">
+        <img src="C:\Users\juanr\Downloads\ZAGIRO IMAGE VENTAS.png" alt="ZAGIRO GYM" class="hero-image"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+
+        <!-- Fallback si la imagen no carga -->
+        <div style="display: none; padding: 60px 20px; text-align: center; background: var(--dark-gray);">
+            <div style="font-size: 32px; color: var(--gold); font-weight: 700; margin-bottom: 10px;">ZAGIRO GYM</div>
+            <div style="font-size: 18px; color: var(--silver);">Pack 3 polos x S/100</div>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-title">PACK COMPLETO</div>
+            <div class="hero-subtitle">3 polos premium por solo</div>
+        </div>
+    </section>
+
+    <!-- Oferta -->
+    <section class="offer">
+        <div class="offer-price">S/100</div>
+        <div class="offer-note">Precio normal: S/120 (Ahorras S/20)</div>
+    </section>
+
+    <!-- Color -->
+    <section class="color-section">
+        <div class="color-title">COLOR DISPONIBLE</div>
+        <div class="color-display">NEGRO</div>
+        <div style="font-size: 15px; color: var(--silver);">Color exclusivo</div>
+    </section>
+
+    <!-- Tallas -->
+    <section class="sizes">
+        <div class="color-title">ELIGE TU TALLA</div>
+        <div class="sizes-grid">
+            <div class="size active">S</div>
+            <div class="size">M</div>
+            <div class="size">L</div>
+            <div class="size">XL</div>
+            <div class="size">XXL</div>
+        </div>
+    </section>
+
+    <!-- Proceso simple -->
+    <section class="process">
+        <div class="color-title" style="text-align: center; margin-bottom: 25px;">CÓMO PEDIR</div>
+
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <h3>Elige el pack</h3>
+                <p>Pack de 3 polos negros por S/100</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <h3>Selecciona talla</h3>
+                <p>Elige tu talla de la lista</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <h3>Envía WhatsApp</h3>
+                <p>Mensaje al +51 958 765 620</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <h3>Recibe en casa</h3>
+                <p>Entrega en Lima en 24-48 horas</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="color-title">CONTACTO</div>
+
+        <div class="contact-info">
+            <div class="contact-item">
+                <a href="https://wa.me/51958765620" target="_blank">
+                    <i class="fab fa-whatsapp"></i> +51 958 765 620
+                </a>
+            </div>
+            <div class="contact-item">Lima, Perú</div>
+            <div class="contact-item">Lun-Sáb: 9am - 9pm</div>
+        </div>
+
+        <div style="background: rgba(212, 175, 55, 0.1); padding: 20px; border-radius: 10px; margin: 20px 0;">
+            <div style="font-size: 14px; color: var(--silver); margin-bottom: 5px;">OFERTA VIGENTE</div>
+            <div style="font-size: 24px; color: var(--gold); font-weight: 700;">3 POLOS X S/100</div>
+        </div>
+
+        <div class="copyright">
+            © 2026 ZAGIRO GYM<br>
+            Polos deportivos de calidad
+        </div>
+    </footer>
+
+    <!-- WhatsApp flotante -->
+    <a href="https://wa.me/51958765620?text=Hola%20ZAGIRO,%20quiero%20información%20del%20pack%203%20polos"
+        class="whatsapp-fixed" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- CTA fijo -->
+    <div class="cta-fixed">
+        <a href="https://wa.me/51958765620?text=Quiero%20comprar%20el%20pack%203%20polos%20negros%20x%20S/100.%20Talla:%20"
+            class="cta-button" target="_blank">
+            PEDIR POR WHATSAPP
+        </a>
+    </div>
+
+    <script>
+        // Configuración simple
+        document.addEventListener('DOMContentLoaded', function () {
+            const whatsappNumber = "51958765620";
+
+            // Selección de tallas
+            const sizes = document.querySelectorAll('.size');
+            sizes.forEach(size => {
+                size.addEventListener('click', function () {
+                    sizes.forEach(s => s.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Actualizar enlaces con la talla seleccionada
+                    const selectedSize = this.textContent;
+                    updateLinksWithSize(selectedSize);
+                });
+            });
+
+            function updateLinksWithSize(size) {
+                const links = document.querySelectorAll('a[href*="wa.me"]');
+                links.forEach(link => {
+                    if (link.href.includes('Talla:%20')) {
+                        link.href = link.href.replace(/Talla:%20([SMLXLXXL]*)/, `Talla:%20${size}`);
+                    }
+                });
+            }
+
+            // Actualizar número de WhatsApp
+            const links = document.querySelectorAll('a[href*="wa.me"]');
+            links.forEach(link => {
+                if (!link.href.includes(whatsappNumber)) {
+                    link.href = link.href.replace(/519\d+/, whatsappNumber);
+                }
+            });
+
+            // Manejo de error de imagen
+            const heroImage = document.querySelector('.hero-image');
+            if (heroImage) {
+                heroImage.onerror = function () {
+                    this.style.display = 'none';
+                    const fallback = this.nextElementSibling;
+                    if (fallback) fallback.style.display = 'block';
+                };
+            }
+
+            // Scroll suave para móvil
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#' && href.startsWith('#')) {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            window.scrollTo({
+                                top: target.offsetTop - 70,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Efecto simple al hacer clic en botones
+            const buttons = document.querySelectorAll('.cta-button, .whatsapp-btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', function () {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 200);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
